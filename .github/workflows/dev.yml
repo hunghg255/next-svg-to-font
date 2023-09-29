@@ -30,7 +30,6 @@ jobs:
             docker container rm -f vsp-nxb-website-service
             docker run -d -p 3003:3000 --name vsp-nxb-website-service vsp-nxb-website-image
             docker image prune -f
-            docker rmi $(docker images -f "dangling=true" -q)
 
       # - name: On Failure
       #   if: failure()
