@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "env-cmd -f .env.development next dev",
     "build": "next build",
+    "buildDev": "cp -f .env.clientDev .env && next build",
+    "buildProd": "cp -f .env.clientProd .env && next build",
     "start": "env-cmd -f .env.production next start",
     "lint": "next lint",
     "analyze": "cross-env ANALYZE=true next build",
@@ -13,7 +15,8 @@
     "verify-commit": "verify-commit-msg",
     "postinstall": "git-scm-hooks",
     "release": "bumpp -r",
-    "gen-icon": "csvg-to-font -c t4font"
+    "gen-icon": "csvg-to-font -c t4font",
+    "standalone": "node server.js"
   },
   "dependencies": {
     "ahooks": "^3.7.8",
@@ -25,6 +28,7 @@
     "jotai": "^2.4.2",
     "next": "^13.5.3",
     "next-i18next": "^11.3.0",
+    "patch-package": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sharp": "^0.30.7",

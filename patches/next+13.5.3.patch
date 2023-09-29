@@ -1,0 +1,20 @@
+diff --git a/node_modules/next/dist/server/config.js b/node_modules/next/dist/server/config.js
+index 3c85e66..bd91fac 100644
+--- a/node_modules/next/dist/server/config.js
++++ b/node_modules/next/dist/server/config.js
+@@ -488,9 +488,12 @@ function assignDefaults(dir, userConfig, silent) {
+         },
+         ahooks: {
+             transform: {
+-                createUpdateEffect: "modularize-import-loader?name=createUpdateEffect&from=named&as=default!ahooks/es/createUpdateEffect",
+-                "*": "ahooks/es/{{member}}"
+-            }
++                createUpdateEffect: 'modularize-import-loader?name=createUpdateEffect&from=named&as=default!ahooks/es/createUpdateEffect',
++                clearCache: 'modularize-import-loader?name=clearCache&from=named&as=default!ahooks/es/useRequest',
++                useResponsive: 'modularize-import-loader?name=useResponsive&from=named&as=default!ahooks/es/useResponsive',
++                configResponsive: 'modularize-import-loader?name=configResponsive&from=named&as=default!ahooks/es/useResponsive',
++                '*': 'ahooks/lib/{{member}}',
++            },
+         },
+         "@ant-design/icons": {
+             transform: {

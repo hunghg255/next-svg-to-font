@@ -9,6 +9,7 @@ const nextConfig = {
   // i18n
   i18n,
   swcMinify: true,
+  output: 'standalone',
 
   // config env
   publicRuntimeConfig: {

@@ -1,0 +1,52 @@
+name: Deploy Dev
+
+on:
+  push:
+    branches:
+      - dev
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script_stop: true
+          script: |
+            cd /home/FE/vsp-nxb-website
+            git checkout .
+            git checkout dev
+            git pull origin dev
+            docker build -t vsp-nxb-website-image . -f DockerfileDev
+            docker run -d -p 3003:3000 --name vsp-nxb-website-service vsp-nxb-website-image
+            docker image prune -f
+
+      # - name: On Failure
+      #   if: failure()
+      #   uses: hunghg255/action-notifications@master
+      #   with:
+      #     discord_webhook: ${{ secrets.DISCORD_URL }}
+
+  # notifification:
+  #   needs: deploy
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     packages: write
+  #     contents: read
+
+  #   steps:
+  #     - uses: hunghg255/action-notifications@master
+  #       if: always()
+  #       with:
+  #         discord_webhook: ${{ secrets.DISCORD_URL }}
+  #         title: "Deploy DEV"
+  #         description: "Test here: http://14.248.85.158:14005"
