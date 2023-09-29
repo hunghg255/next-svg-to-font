@@ -16,7 +16,7 @@ function Home() {
         <div className='flex-initial w-32 ...'>03</div>
       </div>
 
-      <Icon icon='t4font-vite' className='text-[red] !text-[50px]' />
+      <Icon icon='t4font-add-circle-fill' className='text-[red] !text-[50px]' />
     </>
   );
 }
