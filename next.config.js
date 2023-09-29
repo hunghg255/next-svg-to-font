@@ -18,7 +18,16 @@ const nextConfig = {
   },
   images: {
     minimumCacheTTL: 60,
-    domains: [],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
   httpAgentOptions: {
     keepAlive: false,
