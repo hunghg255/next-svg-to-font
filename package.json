@@ -1,6 +1,6 @@
 {
   "name": "vsp-nxb-website",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "dev": "env-cmd -f .env.clientDev next dev",
