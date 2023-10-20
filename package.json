@@ -15,7 +15,7 @@
     "verify-commit": "verify-commit-msg",
     "postinstall": "git-scm-hooks",
     "release": "bumpp -r",
-    "gen-icon": "csvg-to-font -c t4font",
+    "gen-icon": "csvg-to-font",
     "standalone": "node server.js"
   },
   "dependencies": {

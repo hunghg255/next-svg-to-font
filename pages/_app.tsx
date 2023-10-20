@@ -8,7 +8,6 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { appWithTranslation } from 'next-i18next';
 
-import ErrorBoundary from '@components/ErrorBoundary';
 import AppLayout from '@layout/AppLayout';
 
 import nextI18nConfig from '../next-i18next.config';
@@ -39,9 +38,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         />
       </Head>
 
-      <ErrorBoundary>
+      <>
         <AppLayout>{getLayout(<Component {...pageProps} />)}</AppLayout>
-      </ErrorBoundary>
+      </>
     </>
   );
 }
